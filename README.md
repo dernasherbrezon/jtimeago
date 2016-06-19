@@ -11,6 +11,7 @@ Include dependency:
 		<dependency>
 			<groupId>com.aerse</groupId>
 			<artifactId>jtimeago</artifactId>
+			<version>1.1</version>
 		</dependency>
 ```
 
