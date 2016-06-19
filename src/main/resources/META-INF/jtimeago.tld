@@ -11,6 +11,54 @@
     <uri>https://github.com/dernasherbrezon/jtimeago</uri>
 
 	<tag>
+		<name>formatYear</name>
+		<tag-class>com.aerse.jtimeago.JIntervalYear</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description>year to format</description>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>Output formatted text into this var instead of stream. See JSTL formatDate</description>
+			<name>var</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>Variable scope to use when outputting into variable. See JSTL formatDate</description>
+			<name>scope</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>		
+	</tag>
+
+	<tag>
+		<name>formatMonth</name>
+		<tag-class>com.aerse.jtimeago.JIntervalMonth</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description>month to format</description>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>Output formatted text into this var instead of stream. See JSTL formatDate</description>
+			<name>var</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>Variable scope to use when outputting into variable. See JSTL formatDate</description>
+			<name>scope</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>		
+	</tag>
+
+	<tag>
 		<name>formatDate</name>
 		<tag-class>com.aerse.jtimeago.JTimeAgo</tag-class>
 		<body-content>empty</body-content>
