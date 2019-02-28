@@ -1,4 +1,5 @@
-# jtimeago
+# jtimeago [![Build Status](https://travis-ci.org/dernasherbrezon/jtimeago.svg?branch=master)](https://travis-ci.org/dernasherbrezon/jtimeago) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=com.aerse%3Ajtimeago&metric=alert_status)](https://sonarcloud.io/dashboard?id=com.aerse%3Ajtimeago)
+
 Tag lib for various date formatting:
 * "Time ago". Examples: 1 seconds ago, 2 months ago, just now
 * Interval. Examples: 2 months, 5 years, 1 year
