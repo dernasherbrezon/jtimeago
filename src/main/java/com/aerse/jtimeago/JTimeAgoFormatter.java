@@ -100,4 +100,8 @@ public class JTimeAgoFormatter {
 		}
 		return sdf.format(value);
 	}
+	
+	private JTimeAgoFormatter() {
+		//do nothing
+	}
 }

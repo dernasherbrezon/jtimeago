@@ -1,6 +1,7 @@
 package com.aerse.jtimeago;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -15,7 +16,7 @@ public class JTimeAgo extends TagSupport {
 
 	private Date value;
 	private String pattern;
-	private Object timeZone;
+	private Serializable timeZone;
 	private String var;
 	private int scope;
 
@@ -78,7 +79,7 @@ public class JTimeAgo extends TagSupport {
 		return timeZone;
 	}
 
-	public void setTimeZone(Object timeZone) {
+	public void setTimeZone(Serializable timeZone) {
 		this.timeZone = timeZone;
 	}
 

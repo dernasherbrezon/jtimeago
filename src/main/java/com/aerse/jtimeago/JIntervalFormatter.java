@@ -80,5 +80,9 @@ public class JIntervalFormatter {
 		}
 		return year + suffix;
 	}
+	
+	private JIntervalFormatter() {
+		//do nothing
+	}
 
 }
