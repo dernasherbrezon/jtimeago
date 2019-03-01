@@ -16,7 +16,7 @@ public class JTimeAgo extends TagSupport {
 
 	private Date value;
 	private String pattern;
-	private Object timeZone;
+	private TimeZone timeZone;
 	private String var;
 	private int scope;
 
@@ -24,33 +24,16 @@ public class JTimeAgo extends TagSupport {
 	public int doEndTag() throws JspException {
 		if (value == null) {
 			if (var != null) {
-				pageContext.removeAttribute(var, scope);
+				pageContext.removeAttribute(var, getScope());
 			}
 			return EVAL_PAGE;
 		}
 
-		TimeZone tz = null;
-		if ((timeZone instanceof String) && ((String) timeZone).equals("")) {
-			timeZone = null;
-		}
-		if (timeZone != null) {
-			if (timeZone instanceof String) {
-				tz = TimeZone.getTimeZone((String) timeZone);
-			} else if (timeZone instanceof TimeZone) {
-				tz = (TimeZone) timeZone;
-			} else {
-				throw new JspTagException("bad timezone: " + timeZone);
-			}
-		}
-
 		Locale locale = Locale.getDefault();
-		String formatted = JTimeAgoFormatter.format(value, pattern, locale, tz);
+		String formatted = JTimeAgoFormatter.format(value, pattern, locale, timeZone);
 
 		if (var != null) {
-			if (scope == 0) {
-				scope = PageContext.PAGE_SCOPE;
-			}
-			pageContext.setAttribute(var, formatted, scope);
+			pageContext.setAttribute(var, formatted, getScope());
 		} else {
 			try {
 				pageContext.getOut().print(formatted);
@@ -71,15 +54,31 @@ public class JTimeAgo extends TagSupport {
 	}
 
 	public void setTimeZone(Object timeZone) {
-		this.timeZone = timeZone;
+		if (timeZone == null) {
+			return;
+		}
+		if (timeZone instanceof String) {
+			this.timeZone = TimeZone.getTimeZone((String) timeZone);
+		} else if (timeZone instanceof TimeZone) {
+			this.timeZone = (TimeZone) timeZone;
+		} else {
+			throw new IllegalArgumentException("bad timezone: " + timeZone);
+		}
 	}
 
 	public void setVar(String var) {
 		this.var = var;
 	}
 
-	public void setScope(int scope) {
-		this.scope = scope;
+	public void setScope(String scope) {
+		this.scope = Util.convert(scope);
+	}
+
+	private int getScope() {
+		if (this.scope == 0) {
+			return PageContext.PAGE_SCOPE;
+		}
+		return this.scope;
 	}
 
 }

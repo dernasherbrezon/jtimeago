@@ -20,7 +20,7 @@ public abstract class AbstractJInterval extends TagSupport {
 	public int doEndTag() throws JspException {
 		if (value == null) {
 			if (var != null) {
-				pageContext.removeAttribute(var, scope);
+				pageContext.removeAttribute(var, getScope());
 			}
 			return EVAL_PAGE;
 		}
@@ -29,10 +29,7 @@ public abstract class AbstractJInterval extends TagSupport {
 		String formatted = format(value.intValue(), locale);
 
 		if (var != null) {
-			if (scope == 0) {
-				scope = PageContext.PAGE_SCOPE;
-			}
-			pageContext.setAttribute(var, formatted, scope);
+			pageContext.setAttribute(var, formatted, getScope());
 		} else {
 			try {
 				pageContext.getOut().print(formatted);
@@ -54,8 +51,15 @@ public abstract class AbstractJInterval extends TagSupport {
 		this.var = var;
 	}
 
-	public void setScope(int scope) {
-		this.scope = scope;
+	public void setScope(String scope) {
+		this.scope = Util.convert(scope);
+	}
+	
+	private int getScope() {
+		if( this.scope == 0 ) {
+			return PageContext.PAGE_SCOPE;
+		}
+		return this.scope;
 	}
 
 }

@@ -18,18 +18,13 @@ import org.eclipse.jetty.webapp.Configuration;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.TemporaryFolder;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
 public class JTimeAgoTest {
-
-	@Rule
-	public TemporaryFolder folder = new TemporaryFolder();
 
 	private Server server;
 	private LocalConnector localConnector;
@@ -69,6 +64,7 @@ public class JTimeAgoTest {
 		webapp.setContextPath("/");
 		webapp.setResourceBase("./src/test/resources/webapp");
 		webapp.getMetaData().addWebInfJar(JarResource.newResource(new File("./src/main/resources/")));
+		webapp.setAttribute("org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern", ".*/.*jsp-api-[^/]*\\.jar$|.*/.*jstl-[^/]*\\.jar$|.*/.*taglibs[^/]*\\.jar$");
 		Configuration.ClassList classlist = Configuration.ClassList.setServerDefault(server);
 		classlist.addBefore("org.eclipse.jetty.webapp.JettyWebXmlConfiguration", "org.eclipse.jetty.annotations.AnnotationConfiguration");
 		server.setHandler(webapp);
