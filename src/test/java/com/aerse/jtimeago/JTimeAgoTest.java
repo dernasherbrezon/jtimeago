@@ -46,9 +46,9 @@ public class JTimeAgoTest {
 		response = HttpTester.parseResponse(HttpTester.from(localConnector.getResponse(request.generate())));
 
 		StringBuilder expected = new StringBuilder();
-		try( BufferedReader r = new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream("/expected/" + pageName + ".txt"))) ) {
+		try (BufferedReader r = new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream("/expected/" + pageName + ".txt")))) {
 			String curLine = null;
-			while( (curLine = r.readLine()) != null ) {
+			while ((curLine = r.readLine()) != null) {
 				expected.append(curLine).append("\n");
 			}
 		}
