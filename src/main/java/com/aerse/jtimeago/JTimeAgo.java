@@ -1,13 +1,13 @@
 package com.aerse.jtimeago;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspTagException;
+import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.TagSupport;
 
 public class JTimeAgo extends TagSupport {
@@ -16,7 +16,7 @@ public class JTimeAgo extends TagSupport {
 
 	private Date value;
 	private String pattern;
-	private Serializable timeZone;
+	private Object timeZone;
 	private String var;
 	private int scope;
 
@@ -47,6 +47,9 @@ public class JTimeAgo extends TagSupport {
 		String formatted = JTimeAgoFormatter.format(value, pattern, locale, tz);
 
 		if (var != null) {
+			if (scope == 0) {
+				scope = PageContext.PAGE_SCOPE;
+			}
 			pageContext.setAttribute(var, formatted, scope);
 		} else {
 			try {
@@ -59,40 +62,20 @@ public class JTimeAgo extends TagSupport {
 		return EVAL_PAGE;
 	}
 
-	public Date getValue() {
-		return value;
-	}
-
 	public void setValue(Date value) {
 		this.value = value;
-	}
-
-	public String getPattern() {
-		return pattern;
 	}
 
 	public void setPattern(String pattern) {
 		this.pattern = pattern;
 	}
 
-	public Object getTimeZone() {
-		return timeZone;
-	}
-
-	public void setTimeZone(Serializable timeZone) {
+	public void setTimeZone(Object timeZone) {
 		this.timeZone = timeZone;
-	}
-
-	public String getVar() {
-		return var;
 	}
 
 	public void setVar(String var) {
 		this.var = var;
-	}
-
-	public int getScope() {
-		return scope;
 	}
 
 	public void setScope(int scope) {

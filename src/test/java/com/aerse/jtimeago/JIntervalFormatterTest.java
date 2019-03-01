@@ -6,7 +6,7 @@ import java.util.Locale;
 
 import org.junit.Test;
 
-public class JIntervalFormatterFormatter {
+public class JIntervalFormatterTest {
 
 	private final static Locale RUSSIAN = Locale.forLanguageTag("ru");
 

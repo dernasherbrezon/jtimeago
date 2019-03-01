@@ -5,6 +5,7 @@ import java.util.Locale;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspTagException;
+import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.TagSupport;
 
 public abstract class AbstractJInterval extends TagSupport {
@@ -28,6 +29,9 @@ public abstract class AbstractJInterval extends TagSupport {
 		String formatted = format(value.intValue(), locale);
 
 		if (var != null) {
+			if (scope == 0) {
+				scope = PageContext.PAGE_SCOPE;
+			}
 			pageContext.setAttribute(var, formatted, scope);
 		} else {
 			try {
@@ -42,24 +46,12 @@ public abstract class AbstractJInterval extends TagSupport {
 
 	public abstract String format(int value, Locale locale);
 
-	public Number getValue() {
-		return value;
-	}
-
 	public void setValue(Number value) {
 		this.value = value;
 	}
 
-	public String getVar() {
-		return var;
-	}
-
 	public void setVar(String var) {
 		this.var = var;
-	}
-
-	public int getScope() {
-		return scope;
 	}
 
 	public void setScope(int scope) {
