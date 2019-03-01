@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Locale;
+import java.util.TimeZone;
 
 import org.eclipse.jetty.http.HttpTester;
 import org.eclipse.jetty.server.LocalConnector;
@@ -62,6 +63,7 @@ public class JTimeAgoTest {
 	@Before
 	public void setUp() throws Exception {
 		Locale.setDefault(Locale.ENGLISH);
+		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
 		server = new Server();
 		WebAppContext webapp = new WebAppContext();
 		webapp.setContextPath("/");
