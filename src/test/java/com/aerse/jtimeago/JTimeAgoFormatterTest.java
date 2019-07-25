@@ -13,6 +13,14 @@ public class JTimeAgoFormatterTest {
 	private final static Locale RUSSIAN = Locale.forLanguageTag("ru");
 
 	@Test
+	public void testUnsupportedLocale() {
+		Calendar cal = Calendar.getInstance(JIntervalFormatterTest.UNSUPPORTED_LOCALE);
+		String actual = JTimeAgoFormatter.format(cal.getTime(), "dd MMM yyyy HH:mm", JIntervalFormatterTest.UNSUPPORTED_LOCALE, null);
+		String expected = new SimpleDateFormat("dd MMM yyyy HH:mm", JIntervalFormatterTest.UNSUPPORTED_LOCALE).format(cal.getTime());
+		assertEquals(expected, actual);
+	}
+	
+	@Test
 	public void testEnglish() {
 		Calendar cal = Calendar.getInstance(Locale.ENGLISH);
 		assertEquals("Just now", formatEn(cal));

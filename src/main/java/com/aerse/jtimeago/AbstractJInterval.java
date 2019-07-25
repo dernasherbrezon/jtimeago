@@ -25,7 +25,7 @@ public abstract class AbstractJInterval extends TagSupport {
 			return EVAL_PAGE;
 		}
 
-		Locale locale = Locale.getDefault();
+		Locale locale = pageContext.getResponse().getLocale();
 		String formatted = format(value.intValue(), locale);
 
 		if (var != null) {

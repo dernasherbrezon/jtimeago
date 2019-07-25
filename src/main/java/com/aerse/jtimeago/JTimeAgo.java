@@ -29,7 +29,7 @@ public class JTimeAgo extends TagSupport {
 			return EVAL_PAGE;
 		}
 
-		Locale locale = Locale.getDefault();
+		Locale locale = pageContext.getResponse().getLocale();
 		String formatted = JTimeAgoFormatter.format(value, pattern, locale, timeZone);
 
 		if (var != null) {

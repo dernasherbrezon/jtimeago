@@ -9,13 +9,34 @@ import org.junit.Test;
 public class JIntervalFormatterTest {
 
 	private final static Locale RUSSIAN = Locale.forLanguageTag("ru");
+	public final static Locale UNSUPPORTED_LOCALE = Locale.FRENCH;
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testInvalidMonth() {
+		JIntervalFormatter.formatMonth(-1, Locale.ENGLISH);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testInvalidYear() {
+		JIntervalFormatter.formatYear(-1, Locale.ENGLISH);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testUnsupportedLocale() {
+		JIntervalFormatter.formatMonth(1, UNSUPPORTED_LOCALE);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testUnsupportedYear() {
+		JIntervalFormatter.formatYear(1, UNSUPPORTED_LOCALE);
+	}
 
 	@Test
 	public void testEnglishMonth() {
 		assertEquals("1 month", JIntervalFormatter.formatMonth(1, Locale.ENGLISH));
 		assertEquals("2 months", JIntervalFormatter.formatMonth(2, Locale.ENGLISH));
 	}
-	
+
 	@Test
 	public void testRussianMonth() {
 		assertEquals("1 месяц", JIntervalFormatter.formatMonth(1, RUSSIAN));
@@ -27,7 +48,7 @@ public class JIntervalFormatterTest {
 		assertEquals("22 месяца", JIntervalFormatter.formatMonth(22, RUSSIAN));
 		assertEquals("25 месяцев", JIntervalFormatter.formatMonth(25, RUSSIAN));
 	}
-	
+
 	@Test
 	public void testEnglishYear() {
 		assertEquals("1 year", JIntervalFormatter.formatYear(1, Locale.ENGLISH));
@@ -35,7 +56,7 @@ public class JIntervalFormatterTest {
 		assertEquals("11 years", JIntervalFormatter.formatYear(11, Locale.ENGLISH));
 		assertEquals("21 year", JIntervalFormatter.formatYear(21, Locale.ENGLISH));
 	}
-	
+
 	@Test
 	public void testRussianYear() {
 		assertEquals("1 год", JIntervalFormatter.formatYear(1, RUSSIAN));
@@ -47,5 +68,5 @@ public class JIntervalFormatterTest {
 		assertEquals("22 года", JIntervalFormatter.formatYear(22, RUSSIAN));
 		assertEquals("25 лет", JIntervalFormatter.formatYear(25, RUSSIAN));
 	}
-	
+
 }
