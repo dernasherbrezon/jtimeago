@@ -6,4 +6,4 @@
 	pageContext.setAttribute("comment", comment);
 %>
 <fmt:setLocale value="ru"/>
-<ta:formatDate value="${comment}" pattern="dd MMM yyyy HH:mm" />
+<ta:formatDate value="${comment}" pattern="dd MMMM yyyy HH:mm" />
