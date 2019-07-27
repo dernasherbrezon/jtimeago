@@ -12,7 +12,7 @@ Include dependency:
 		<dependency>
 			<groupId>com.aerse</groupId>
 			<artifactId>jtimeago</artifactId>
-			<version>1.1</version>
+			<version>1.3</version>
 		</dependency>
 ```
 
