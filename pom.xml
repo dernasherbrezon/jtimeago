@@ -3,7 +3,7 @@
 
 	<groupId>com.aerse</groupId>
 	<artifactId>jtimeago</artifactId>
-	<version>1.3</version>
+	<version>1.4-SNAPSHOT</version>
 	<name>jtimeago</name>
 	<description>Tag lib for "Time ago" date formatting</description>
 	<inceptionYear>2016</inceptionYear>
@@ -195,7 +195,7 @@
 		<url>https://github.com/dernasherbrezon/jtimeago</url>
 		<connection>scm:git:git@github.com/dernasherbrezon/jtimeago.git</connection>
 		<developerConnection>scm:git:https://github.com/dernasherbrezon/jtimeago.git</developerConnection>
-		<tag>jtimeago-1.3</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<issueManagement>
